@@ -1,8 +1,6 @@
 # TRACEv1 (for MATLAB)
-Tracer based Rapid Anthropogenic Carbon Estimation
-
-TRansit-time-distribution-based Anthropogenic Carbon Estimation (TRACE)
-Version 1.0 (Version at time of submission)
+Tracer-based Rapid Anthropogenic Carbon Estimation (TRACE)
+Version 1.0 (Version at time of manuscript submission, will be updated to 1.1 upon publication)
 
 This code generates estimates of ocean anthropogenic carbon content from
 user-supplied inputs of coordinates (lat, lon, depth), salinity,
