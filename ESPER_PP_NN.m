@@ -300,7 +300,7 @@ for PIter=1:p
     end
     
     % Loading the data, with an error message if not found
-    FN=horzcat('.\Polys.mat');
+    FN='Polys.mat';
     % Making sure you downloaded the needed file and put it somewhere it
     % can be found
     if exist(FN,'file')<2; error('ESPER_PP could not find the file(s) needed to run.  These mandatory file(s) should be distributed from the same website as ESPER_PP.  Contact the corresponding author if you cannot find it there.  If you do have it then make sure all of the contents of the ESPER.zip extract are on the MATLAB path or in the active directory.  This will require adding several subfolders for ESPER.'); end
