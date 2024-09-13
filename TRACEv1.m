@@ -17,24 +17,25 @@ function [Canth,PrefProps,Ages,Uncertainty]=TRACEv1(OutputCoordinates,Dates,...
 %  cruises. These transit time distributions are inverse gaussians with one
 %  scale factor that sets the mean age and width of the distribution. (2) A
 %  neural network is constructed that relates the scale factor to
-%  coordinate information and measured salinity and temperature. (3) A
-%  separate neural network is uses an identical approach to relate the same
+%  coordinate information and measured salinity and temperature. (3)
+%  Separate neural networks use an identical approach to relate the same
 %  information to preformed property distributions estimated in a previous
-%  research effort (Carter et al. 2021a:Preformed Properties for Marine
+%  research effort (Carter et al. 2021a: Preformed Properties for Marine
 %  Organic Matter and Carbonate Mineral Cycling Quantification)
 %
-%  Steps taken when the code is called: (1) Both neural networks are
-%  called, generating information that is used herein to constuct preformed
-%  property information along with a transit time distribution.  (2) The
-%  user-provided dates are then combined with default, built-in, or
-%  user-provided atmospheric CO2 trajectories to produce records of the
-%  atmospheric CO2 exposure for each parcel of water. (3) This information
-%  is combined with estimated equilibrium values for the given CO2 exposure
-%  along with preindustrial (i.e., 280 uatm pCO2) CO2 exposure.  (4) The
-%  difference between the two is computed as the anthropogenic carbon
-%  estimate.
+%  Steps taken when the code is called: 
+% 
+%  (1) All neural networks are called, generating information that is used
+%  herein to constuct preformed property information along with a transit
+%  time distribution. (2) The user-provided dates are then combined with
+%  default, built-in, or user-provided atmospheric CO2 trajectories to
+%  produce records of the atmospheric CO2 exposure for each parcel of
+%  water. (3) This information is combined with estimated equilibrium DIC
+%  values for the given CO2 exposure along with preindustrial (i.e., 280
+%  uatm pCO2) CO2 exposure. (4) The difference between the two is computed
+%  as the anthropogenic carbon estimate.
 %
-%  Updated 2024.08.16
+%  Updated 2024.09.13
 %
 %  Citation information: 
 %  TRACE, ESPER_SF_NN, and ESPER_PP_NN Carter et al. submitted
@@ -78,7 +79,7 @@ function [Canth,PrefProps,Ages,Uncertainty]=TRACEv1(OutputCoordinates,Dates,...
 % PredictorMeasurements (required n by y array): 
     % Parameter measurements that will be used to estimate alkalinity.  The
     % column order (y columns) is arbitrary, but specified by
-    % PredictorTypes. Temperature should be expressed as degrees C and
+    % PredictorTypes.  Temperature should be expressed as degrees C and
     % salinity should be specified with the unitless convention.  NaN
     % inputs are acceptable, but will lead to NaN estimates for any
     % equations that depend on that parameter.  If temperature is not
